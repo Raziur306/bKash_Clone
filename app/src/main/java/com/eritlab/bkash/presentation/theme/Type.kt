@@ -1,4 +1,4 @@
-package com.eritlab.bkash.ui.theme
+package com.eritlab.bkash.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

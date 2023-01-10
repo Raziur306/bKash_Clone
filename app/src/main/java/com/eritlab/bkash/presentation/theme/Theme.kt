@@ -1,4 +1,4 @@
-package com.eritlab.bkash.ui.theme
+package com.eritlab.bkash.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

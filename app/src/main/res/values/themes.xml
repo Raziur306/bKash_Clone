@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.BKash" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/pinkColor
+        </item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">
+            @color/pinkColor
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">
+            @drawable/dynamic_logo
+        </item>
     </style>
 </resources>
