@@ -29,15 +29,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.Navigator
 import com.eritlab.bkash.presentation.theme.backgroundColor
 import com.eritlab.bkash.R
+import com.eritlab.bkash.presentation.Screen
 import com.eritlab.bkash.presentation.common.keyboardAsState
 import com.eritlab.bkash.presentation.theme.darkWhite
 import com.eritlab.bkash.presentation.theme.offWhite
 
 @Preview(showSystemUi = true)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     //state
     var text by remember { mutableStateOf("") }
     val keyboardHeight by keyboardAsState()
@@ -135,7 +138,8 @@ fun LoginScreen() {
                 .padding(bottom = (keyboardHeight / 2.49).dp)
                 .clickable {
                     if (text.length == 5) {
-
+                        navController.popBackStack()
+                        navController.navigate(Screen.HomeScreen.route)
                     }
                 }
         ) {

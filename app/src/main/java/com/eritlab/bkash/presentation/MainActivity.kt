@@ -12,6 +12,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
@@ -19,9 +20,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.eritlab.bkash.R
+import com.eritlab.bkash.presentation.dashboard.component.HomeScreen
 import com.eritlab.bkash.presentation.login.components.LoginScreen
 import com.eritlab.bkash.presentation.splash.component.SplashScreen
 import com.eritlab.bkash.presentation.theme.BKashTheme
+import com.eritlab.bkash.presentation.theme.backgroundColor
 import com.eritlab.bkash.presentation.theme.offWhite
 import kotlinx.coroutines.delay
 
@@ -48,7 +51,7 @@ private fun Navigate(context: Context) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.SplashScreen.route
+        startDestination = Screen.HomeScreen.route
     )
     {
         composable(Screen.SplashScreen.route) {
@@ -62,7 +65,12 @@ private fun Navigate(context: Context) {
         composable(Screen.LoginScreen.route) {
             (context as Activity).window?.statusBarColor =
                 ContextCompat.getColor(context, R.color.offWhite)
-            LoginScreen()
+            LoginScreen(navController)
+        }
+        composable(Screen.HomeScreen.route) {
+            (context as Activity).window?.statusBarColor =
+                MaterialTheme.colors.backgroundColor.toArgb()
+            HomeScreen()
         }
     }
 
