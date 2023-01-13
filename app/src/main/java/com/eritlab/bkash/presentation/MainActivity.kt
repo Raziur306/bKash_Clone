@@ -2,7 +2,6 @@ package com.eritlab.bkash.presentation
 
 import android.app.Activity
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,17 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.eritlab.bkash.R
-import com.eritlab.bkash.presentation.dashboard.component.HomeScreen
+import com.eritlab.bkash.presentation.component.FragmentScreen
 import com.eritlab.bkash.presentation.login.components.LoginScreen
 import com.eritlab.bkash.presentation.splash.component.SplashScreen
 import com.eritlab.bkash.presentation.theme.BKashTheme
 import com.eritlab.bkash.presentation.theme.backgroundColor
-import com.eritlab.bkash.presentation.theme.offWhite
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
@@ -51,7 +48,7 @@ private fun Navigate(context: Context) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route
+        startDestination = Screen.FragmentScreen.route
     )
     {
         composable(Screen.SplashScreen.route) {
@@ -67,10 +64,10 @@ private fun Navigate(context: Context) {
                 ContextCompat.getColor(context, R.color.offWhite)
             LoginScreen(navController)
         }
-        composable(Screen.HomeScreen.route) {
+        composable(Screen.FragmentScreen.route) {
             (context as Activity).window?.statusBarColor =
                 MaterialTheme.colors.backgroundColor.toArgb()
-            HomeScreen()
+            FragmentScreen()
         }
     }
 

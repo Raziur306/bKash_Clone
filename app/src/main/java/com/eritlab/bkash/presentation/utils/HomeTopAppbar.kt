@@ -1,7 +1,8 @@
-package com.eritlab.bkash.presentation.dashboard.component
+package com.eritlab.bkash.presentation.common
 
 import android.util.Log
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,33 +10,29 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.eritlab.bkash.R
 import com.eritlab.bkash.presentation.theme.backgroundColor
-import com.eritlab.bkash.presentation.theme.white
-import java.text.DecimalFormat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun HomeScreen() {
+fun HomeTopAppbar(scope: CoroutineScope, scaffoldState: ScaffoldState) {
     //animation
     val animState = remember {
         mutableStateOf(false)
@@ -91,7 +88,7 @@ fun HomeScreen() {
                     Box(
                         //  contentAlignment = Alignment.CenterStart,
                         modifier = Modifier
-                            .align(CenterHorizontally)
+                            .align(Alignment.CenterHorizontally)
                             .background(Color.White, RoundedCornerShape(50.dp))
                             .padding(2.dp)
                     ) {
@@ -131,6 +128,7 @@ fun HomeScreen() {
             Row(
                 modifier = Modifier.weight(0.3f),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(
@@ -138,15 +136,25 @@ fun HomeScreen() {
                     ),
                     contentDescription = "User QR",
                     modifier = Modifier
-                        .size(40.dp),
+                        .weight(1f)
+                        .size(30.dp)
+                        .clip(CircleShape)
+                        .clickable {
+
+                        }
                 )
                 Image(
                     painter = painterResource(
                         id = R.drawable.logo
-                    ), contentDescription = "User QR", modifier = Modifier
-                        .size(40.dp)
+                    ), contentDescription = "User QR",
+                    modifier = Modifier
+                        .weight(1f)
+                        .size(30.dp)
+                        .clip(CircleShape)
                         .clickable {
-
+                            scope.launch {
+                                scaffoldState.drawerState.open()
+                            }
                         }
                 )
             }
