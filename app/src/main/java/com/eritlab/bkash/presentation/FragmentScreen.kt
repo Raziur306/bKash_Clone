@@ -1,26 +1,30 @@
 package com.eritlab.bkash.presentation.component
 
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.eritlab.bkash.presentation.common.BottomBar
 import com.eritlab.bkash.presentation.utils.BottomBarItem
 import com.eritlab.bkash.presentation.common.HomeTopAppbar
+import com.eritlab.bkash.presentation.homeScreen.HomeScreen
 import com.eritlab.bkash.presentation.utils.DrawerMenu
 import com.eritlab.bkash.presentation.utils.DrawerMenuItem
+
 
 @Preview(showSystemUi = true)
 @Composable
 fun FragmentScreen() {
+    //scroll state
+    val lazyScrollState = rememberScrollState()
+
 
     //animation
     val bottomItemList = listOf(
@@ -68,7 +72,7 @@ fun FragmentScreen() {
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { HomeTopAppbar(scope, scaffoldState) },
+         topBar = { HomeTopAppbar(scope, scaffoldState) },
         bottomBar = {
             BottomAppBar(cutoutShape = CircleShape, backgroundColor = Color.White) {
                 BottomBar(bottomItemList, bottomBarSelectedItem)
@@ -95,19 +99,16 @@ fun FragmentScreen() {
             }
         },
 
-
         drawerContent = {
-            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                DrawerMenu(
-                    menuItem = drawerList,
-                    scrollState = scrollState,
-                    scaffoldState = scaffoldState,
-                    scope = scope,
-                    selectedItem = drawerSelectedItem
-                )
-            }
+            DrawerMenu(
+                menuItem = drawerList,
+                scrollState = scrollState,
+                scaffoldState = scaffoldState,
+                scope = scope,
+                selectedItem = drawerSelectedItem
+            )
         }
-    ) {
-
+    ) { padding ->
+        HomeScreen(lazyScrollState)
     }
 }

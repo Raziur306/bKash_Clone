@@ -48,10 +48,7 @@ fun HomeTopAppbar(scope: CoroutineScope, scaffoldState: ScaffoldState) {
     }
 
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    Column() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -139,7 +136,8 @@ fun HomeTopAppbar(scope: CoroutineScope, scaffoldState: ScaffoldState) {
                         .weight(1f)
                         .size(30.dp)
                         .clip(CircleShape)
-                        .clickable {
+                        .clickable(indication = null,
+                            interactionSource = remember { MutableInteractionSource() }) {
 
                         }
                 )
@@ -151,7 +149,8 @@ fun HomeTopAppbar(scope: CoroutineScope, scaffoldState: ScaffoldState) {
                         .weight(1f)
                         .size(30.dp)
                         .clip(CircleShape)
-                        .clickable {
+                        .clickable(indication = null,
+                            interactionSource = remember { MutableInteractionSource() }) {
                             scope.launch {
                                 scaffoldState.drawerState.open()
                             }

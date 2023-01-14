@@ -1,6 +1,7 @@
 package com.eritlab.bkash.presentation.utils
 
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.eritlab.bkash.presentation.theme.backgroundColor
 import kotlinx.coroutines.CoroutineScope
 
@@ -27,31 +30,41 @@ fun DrawerMenu(
     selectedItem: MutableState<DrawerMenuItem>
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Text(
-                text = "বিকাশ",
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.backgroundColor
-            )
-            Text(text = " মেনু", color = MaterialTheme.colors.backgroundColor)
-        }
         Row(
             modifier = Modifier
-                .align(Alignment.End)
-                .border(
-                    width = 1.dp,
-                    color = MaterialTheme.colors.backgroundColor,
-                    shape = CircleShape
-                ), horizontalArrangement = Arrangement.End
+                .fillMaxWidth()
+                .padding(10.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "English",
-                color = MaterialTheme.colors.backgroundColor,
-                modifier = Modifier
-                    .padding(10.dp)
+            Row() {
+                Text(
+                    text = "বিকাশ",
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colors.backgroundColor,
+                    fontSize = 18.sp
+                )
+                Text(text = " মেনু", color = MaterialTheme.colors.backgroundColor, fontSize = 18.sp)
+            }
 
-            )
+            Row(
+                modifier = Modifier
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colors.backgroundColor,
+                        shape = CircleShape
+                    ), horizontalArrangement = Arrangement.End
+            ) {
+                Text(
+                    text = "English",
+                    color = MaterialTheme.colors.backgroundColor,
+                    modifier = Modifier
+                        .padding(10.dp)
+
+                )
+            }
         }
+
     }
     Spacer(modifier = Modifier.height(20.dp))
     Column(modifier = Modifier.verticalScroll(scrollState)) {

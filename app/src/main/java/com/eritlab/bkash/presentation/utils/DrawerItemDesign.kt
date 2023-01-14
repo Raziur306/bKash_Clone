@@ -2,6 +2,8 @@ package com.eritlab.bkash.presentation.utils
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +14,7 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,24 +36,15 @@ fun DrawerItemDesign(
         modifier = Modifier
             .fillMaxWidth()
             .height(30.dp)
-            .padding(top = 2.dp, bottom = 2.dp, end = 8.dp)
-            .clip(
-                RoundedCornerShape(
-                    topStartPercent = 0,
-                    topEndPercent = 50,
-                    bottomStartPercent = 0,
-                    bottomEndPercent = 50
-                )
-            )
-            .clickable {
+            .clickable(indication = null,
+                interactionSource = remember { MutableInteractionSource() }) {
                 selectedItem.value = item
                 scope.launch {
                     delay(250)
                     scaffoldState.drawerState.close()
                 }
             },
-        verticalAlignment = Alignment.CenterVertically
-
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             imageVector = item.icon!!, contentDescription = item.title,
