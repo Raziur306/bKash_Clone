@@ -48,7 +48,7 @@ private fun Navigate(context: Context) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.FragmentScreen.route
+        startDestination = Screen.SplashScreen.route
     )
     {
         composable(Screen.SplashScreen.route) {

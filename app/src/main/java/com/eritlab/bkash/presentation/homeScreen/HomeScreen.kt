@@ -218,7 +218,7 @@ fun HomeScreen(lazyScrollState: ScrollState) {
                     HomeItem(image = R.drawable.ajkerdeal, text = "Ajker Deal")
                     HomeItem(image = R.drawable.daraz, text = "Daraz")
                     HomeItem(image = R.drawable.stiline, text = "Sti Line")
-                    // HomeItem(image = R.drawable.btcl, text = "BTCL")
+                   HomeItem(image = R.drawable.bdjobs, text = "BD Jobs")
                 }
             }
         }

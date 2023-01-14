@@ -1,9 +1,5 @@
 package com.eritlab.bkash.presentation.login.components
 
-import android.graphics.Rect
-import android.util.Log
-import android.view.ViewTreeObserver
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,13 +20,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.Navigator
 import com.eritlab.bkash.presentation.theme.backgroundColor
 import com.eritlab.bkash.R
 import com.eritlab.bkash.presentation.Screen
@@ -38,7 +30,7 @@ import com.eritlab.bkash.presentation.common.keyboardAsState
 import com.eritlab.bkash.presentation.theme.darkWhite
 import com.eritlab.bkash.presentation.theme.offWhite
 
-@Preview(showSystemUi = true)
+
 @Composable
 fun LoginScreen(navController: NavController) {
     //state
@@ -106,6 +98,7 @@ fun LoginScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(10.dp))
 
 
+
             TextField(
                 visualTransformation = PasswordVisualTransformation(),
                 singleLine = true,
@@ -139,7 +132,7 @@ fun LoginScreen(navController: NavController) {
                 .clickable {
                     if (text.length == 5) {
                         navController.popBackStack()
-                        navController.navigate(Screen.HomeScreen.route)
+                        navController.navigate(Screen.FragmentScreen.route)
                     }
                 }
         ) {
