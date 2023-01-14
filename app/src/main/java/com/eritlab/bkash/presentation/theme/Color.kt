@@ -18,3 +18,6 @@ val white = Color(0xFFDBDBE0)
 val Colors.offWhite get() = white
 val white2 = Color(0xFFB1B1B1)
 val Colors.darkWhite get() = white
+
+val white3 = Color(0xFFEDEDF3)
+val Colors.offWhite2 get() = white3

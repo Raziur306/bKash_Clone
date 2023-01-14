@@ -6,6 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.eritlab.bkash.presentation.theme.backgroundColor
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -44,7 +47,12 @@ fun ImageSlider(pagerState: PagerState, imageList: List<Int>) {
         }
     }
 
-    Column(modifier = Modifier.wrapContentHeight()) {
+    Column(
+        modifier = Modifier
+            .wrapContentHeight()
+            .background(Color.White)
+            .padding(5.dp)
+    ) {
         HorizontalPager(
             state = pagerState,
             count = imageList.size,
@@ -57,7 +65,10 @@ fun ImageSlider(pagerState: PagerState, imageList: List<Int>) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Box(contentAlignment = Alignment.BottomCenter) {
+                Box(
+                    modifier = Modifier.clip(RoundedCornerShape(8.dp)),
+                    contentAlignment = Alignment.BottomCenter
+                ) {
                     Image(
                         painter = painterResource(id = imageList[pagerPosition]),
                         contentDescription = "Slider Image"
@@ -84,14 +95,14 @@ private fun DotIndicator(totalDots: Int, selectedIndex: Int) {
             if (index == selectedIndex) {
                 Box(
                     modifier = Modifier
-                        .size(10.dp)
+                        .size(7.dp)
                         .clip(CircleShape)
-                        .background(color = Color.DarkGray)
+                        .background(color = MaterialTheme.colors.backgroundColor)
                 )
             } else {
                 Box(
                     modifier = Modifier
-                        .size(10.dp)
+                        .size(7.dp)
                         .clip(CircleShape)
                         .background(color = Color.LightGray)
                 )
